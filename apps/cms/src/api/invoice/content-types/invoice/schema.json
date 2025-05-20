@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoice",
+  "info": {
+    "singularName": "invoice",
+    "pluralName": "invoices",
+    "displayName": "Invoice",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "source": {
+      "type": "enumeration",
+      "enum": ["NAV", "Sz\u00e1ml\u00e1zz.hu", "Billingo"]
+    },
+    "sourceInvoiceId": {
+      "type": "string"
+    },
+    "invoiceNumber": {
+      "type": "string"
+    },
+    "issueDate": {
+      "type": "date"
+    },
+    "fulfillmentDate": {
+      "type": "date"
+    },
+    "dueDate": {
+      "type": "date"
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": ["HUF", "EUR", "USD"]
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": ["bank_transfer", "cash", "card", "other"]
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "paid", "overdue", "partially_paid"]
+    },
+    "totalNet": {
+      "type": "decimal"
+    },
+    "totalGross": {
+      "type": "decimal"
+    },
+    "vatAmount": {
+      "type": "decimal"
+    },
+    "invoiceType": {
+      "type": "enumeration",
+      "enum": ["normal", "correction", "proforma"]
+    },
+    "originalXml": {
+      "type": "text"
+    },
+    "documentSource": {
+      "type": "string"
+    },
+    "archivedAt": {
+      "type": "datetime"
+    },
+    "partner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::partner.partner"
+    },
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice-item.invoice-item"
+    },
+    "tenant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tenant.tenant"
+    }
+  }
+}

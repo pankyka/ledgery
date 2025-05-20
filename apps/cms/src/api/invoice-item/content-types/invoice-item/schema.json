@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoice-item",
+  "info": {
+    "singularName": "invoice-item",
+    "pluralName": "invoice-items",
+    "displayName": "InvoiceItem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "decimal"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "unitPrice": {
+      "type": "decimal"
+    },
+    "totalNet": {
+      "type": "decimal"
+    },
+    "totalGross": {
+      "type": "decimal"
+    },
+    "vatRate": {
+      "type": "enumeration",
+      "enum": [
+        "vat_27",
+        "vat_18",
+        "vat_5",
+        "vat_0",
+        "AAM",
+        "AM",
+        "EUK",
+        "FAD",
+        "KBAET",
+        "KBAUK",
+        "MAA",
+        "TAM"
+      ]
+    },
+    "vatAmount": {
+      "type": "decimal"
+    },
+    "tenant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tenant.tenant"
+    }
+  }
+}
