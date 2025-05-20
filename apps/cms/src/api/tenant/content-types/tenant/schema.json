@@ -1,13 +1,21 @@
 {
-  "kind": "collectionType",
   "collectionName": "tenant",
   "info": {
     "singularName": "tenant",
     "pluralName": "tenants",
     "displayName": "Tenant"
   },
+  "options": {
+    "draftAndPublish": false
+  },
   "attributes": {
     "name": { "type": "string" },
-    "slug": { "type": "uid", "targetField": "name" }
+    "slug": { "type": "uid", "targetField": "name" },
+    "users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "tenant"
+    }
   }
 }
