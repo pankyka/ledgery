@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 export interface AuthResponse {
   jwt: string;
@@ -43,5 +43,6 @@ export function logout() {
 }
 
 export function getToken(): string | null {
-  return localStorage.getItem("token");
+  if (typeof window === 'undefined') return null;
+  return localStorage.getItem('token');
 }

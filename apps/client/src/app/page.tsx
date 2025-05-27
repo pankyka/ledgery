@@ -1,19 +1,22 @@
 "use client";
 
 import { useAuth } from "@/lib/auth-context";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export default function Dashboard() {
-  const { user, loading, logout } = useAuth();
+export default function RootRedirectPage() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
 
-  if (loading) return <p>Betöltés...</p>;
-  if (!user) return <p>Nem vagy bejelentkezve.</p>;
+  useEffect(() => {
+    if (!loading) {
+      if (user) {
+        router.replace('/dashboard'); // vagy bárhová viszed a bejelentkezetteket
+      } else {
+        router.replace('/login'); // irány login oldalra
+      }
+    }
+  }, [user, loading, router]);
 
-  return (
-    <div className="p-4">
-      <h1 className="text-xl">Üdv, {user.email}!</h1>
-      <button onClick={logout} className="mt-4 p-2 bg-red-500 text-white">
-        Kijelentkezés
-      </button>
-    </div>
-  );
+  return <p>Nem vagy bejelentkezve...</p>;
 }

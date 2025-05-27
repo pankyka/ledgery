@@ -1,3 +1,5 @@
+'use client';
+
 import { registerWithTenant } from '@/lib/auth';
 import { useState } from 'react';
 
