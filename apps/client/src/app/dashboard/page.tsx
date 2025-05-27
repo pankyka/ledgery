@@ -1,10 +1,10 @@
 'use client';
 
 import ProtectedLayout from '@/components/protected-layout';
-import { useAuth } from '@/lib/auth-context';
+import {useAuth} from '@/lib/auth-context';
 
 export default function DashboardPage() {
-  const { user, logout } = useAuth();
+  const {user, logout} = useAuth();
 
   return (
     <ProtectedLayout>

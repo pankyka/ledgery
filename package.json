@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "private": true,
+  "devDependencies": {
+    "@turbo/gen": "^1.9.7",
+    "eslint": "8.46.0",
+    "eslint-config-custom": "*",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.3",
+    "prettier": "3.0.0",
+    "prettier-config-custom": "*",
+    "turbo": "latest"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
