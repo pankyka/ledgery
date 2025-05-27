@@ -19,7 +19,7 @@
     "@eslint/eslintrc": "^3",
     "@repo/typescript-config": "*",
     "@repo/eslint-config": "*",
-    "@repo/ˇprettier-config-custom": "*",
+    "@repo/prettier-config-custom": "*",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
