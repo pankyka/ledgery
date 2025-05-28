@@ -19,7 +19,7 @@ export default {
         confirmed: true,
         confirmation_token: null,
       },
-    });
+    } as any);
 
     ctx.send({ message: 'Email successfully confirmed' });
   },
