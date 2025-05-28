@@ -1,16 +1,20 @@
 {
-  "collectionName": "tenant",
+  "collectionName": "tenants",
   "info": {
     "singularName": "tenant",
     "pluralName": "tenants",
-    "displayName": "Tenant"
+    "displayName": "Tenant",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "attributes": {
-    "name": { "type": "string" },
-    "slug": { "type": "uid", "targetField": "name" },
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
     "users": {
       "type": "relation",
       "relation": "oneToMany",
