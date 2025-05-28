@@ -4,9 +4,9 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=production turbo run build",
+    "build": "turbo run build",
     "dev": "turbo run dev",
-    "start": "cross-env NODE_ENV=production turbo run start"
+    "start": "turbo run start"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
