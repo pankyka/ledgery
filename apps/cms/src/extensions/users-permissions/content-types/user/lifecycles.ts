@@ -11,7 +11,7 @@ export default factories.createCoreController('plugin::users-permissions.user', 
     // Mentjük a tokent a user rekordba
     await strapi.entityService.update('plugin::users-permissions.user', result.id, {
       data: { confirmation_token: token }
-    });
+    } as any);
 
     // Email kiküldés
     await strapi.plugins['email'].services.email.send({
