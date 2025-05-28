@@ -9,11 +9,9 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "tenant": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::tenant.tenant",
-      "inversedBy": "users"
+    "confirmation_token": {
+      "type": "string",
+      "private": true
     }
   }
 }
