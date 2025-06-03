@@ -1,5 +1,7 @@
-import custom from './custom';
+import register from './register';
+import confirm from './confirm';
 
 export default {
-  ...custom,
+  ...register,
+  ...confirm
 };

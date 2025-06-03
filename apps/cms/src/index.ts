@@ -1,5 +1,5 @@
 import type {Core} from '@strapi/strapi';
-import createTenantAdminRole from './scripts/create-tenant-admin-role';
+import createTenantRoles from './scripts/create-tenant-admin-role';
 
 export default {
   /**
@@ -18,6 +18,6 @@ export default {
    * run jobs, or perform some special logic.
    */
   bootstrap({strapi}: {strapi: Core.Strapi}) {
-    //createTenantAdminRole(strapi);
+    createTenantRoles(strapi);
   },
 };
