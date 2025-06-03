@@ -1,5 +1,15 @@
 export default [
   {
+    method: 'GET',
+    path: '/auth/custom',
+    handler: 'auth.customLogin',
+    config: {
+      policies: [],
+      middlewares: [],
+      type: 'content-api',
+    },
+  },
+  {
     method: 'POST',
     path: '/auth/register-with-tenant',
     handler: 'register.registerWithTenant',
