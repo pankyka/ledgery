@@ -3,15 +3,66 @@
   "info": {
     "singularName": "user",
     "pluralName": "users",
-    "displayName": "User"
+    "displayName": "User",
+    "description": "Extended user with tenant and tenantRole"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": false,
+    "timestamps": true
+  },
+  "pluginOptions": {
+    "users-permissions": {
+      "advanced": {
+        "defaultRole": "authenticated",
+        "emailConfirmationRequired": false
+      }
+    }
   },
   "attributes": {
-    "confirmation_token": {
+    "username": {
       "type": "string",
-      "private": true
+      "minLength": 3
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6
+    },
+    "provider": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password"
+    },
+    "resetPasswordToken": {
+      "type": "string"
+    },
+    "confirmationToken": {
+      "type": "string"
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role"
+    },
+    "tenant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tenant.tenant"
+    },
+    "tenantRole": {
+      "type": "enumeration",
+      "enum": [
+        "TenantAdmin",
+        "TenantUser"
+      ]
     }
   }
 }
