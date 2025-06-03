@@ -13,6 +13,8 @@
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
+    "@creazy231/strapi-plugin-apollo-sandbox": "^0.0.15",
+    "@strapi/plugin-graphql": "^5.14.0",
     "@strapi/plugin-cloud": "5.12.1",
     "@strapi/plugin-users-permissions": "5.12.1",
     "@strapi/strapi": "5.12.1",
