@@ -3,5 +3,5 @@ import confirm from './confirm';
 
 export default {
   ...register,
-  ...confirm
+  ...confirm,
 };
