@@ -19,8 +19,22 @@ export default ({env}) => ({
   graphql: {
     enabled: true,
     config: {
+      endpoint: '/graphql',
+      shadowCRUD: true,
       // set this to true if you want to enable the playground in production
       playgroundAlways: true,
+      depthLimit: 7,
+      amountLimit: 100,
+      apolloServer: {
+        tracing: false,
+        introspection: true,
+      },
+    },
+  },
+  logz: {
+    enabled: true,
+    config: {
+      skipList: [],
     },
   },
 });
