@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@creazy231/strapi-plugin-apollo-sandbox": "^0.0.15",
     "@strapi/plugin-graphql": "^5.14.0",
     "axios": "^1.8.4",
     "next": "15.2.4",
