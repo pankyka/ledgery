@@ -3,6 +3,6 @@
   "compilerOptions": {
     "plugins": [{"name": "next"}]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "apps/cms/src/extensions/users-permissions/strapi-server.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "apps/cms/src/extensions/users-permissions/strapi-server.js", "apps/cms/src/extensions/users-permissions/routes/auth.js", "apps/cms/src/extensions/users-permissions/controllers/register.js"],
   "exclude": ["node_modules"]
 }
