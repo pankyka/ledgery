@@ -23,6 +23,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "slugify": "^1.6.6",
     "strapi-health-plugin": "^1.1.0",
     "strapi-plugin-logz": "^0.0.10",
     "styled-components": "^6.0.0",
