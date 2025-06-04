@@ -19,7 +19,7 @@ export default plugin => {
       auth: false,
       policies: [],
       middlewares: [],
-      routesPrefix: 'local',
+      prefix: 'local',
       type: 'content-api',
     },
   });
