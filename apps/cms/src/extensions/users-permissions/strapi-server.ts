@@ -13,14 +13,13 @@ export default plugin => {
 
   plugin.routes['content-api'].routes.push({
     method: 'POST',
-    path: '/auth/register-with-tenant',
+    path: '/auth/local/register-with-tenant',
     handler: 'auth.registerWithTenant',
-    prefix: 'local',
     config: {
       auth: false,
       policies: [],
       middlewares: [],
-      prefix: 'local',
+      prefix: '',
       type: 'content-api',
     },
   });
