@@ -24,7 +24,8 @@
     "react-router-dom": "^6.0.0",
     "strapi-health-plugin": "^1.1.0",
     "strapi-plugin-logz": "^0.0.10",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

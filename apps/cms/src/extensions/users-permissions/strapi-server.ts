@@ -1,6 +1,6 @@
-const registerController = require('./controllers/register');
+import registerController from './controllers/register';
 
-module.exports = (plugin) => {
+export default plugin => {
   console.log('🔁 Registering custom controller: registerWithTenant');
 
   plugin.controllers.user = {

@@ -1,8 +1,8 @@
 {
-  "extends": "typescript-config/nextjs.json",
+  "extends": "./packages/typescript-config/nextjs.json",
   "compilerOptions": {
     "plugins": [{"name": "next"}]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "apps/cms/src/extensions/users-permissions/strapi-server.js", "apps/cms/src/extensions/users-permissions/routes/auth.js", "apps/cms/src/extensions/users-permissions/controllers/register.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "apps/cms/src/extensions/users-permissions/strapi-server.ts", "apps/cms/src/extensions/users-permissions/routes/auth.ts", "apps/cms/src/extensions/users-permissions/controllers/register.ts"],
   "exclude": ["node_modules"]
 }
