@@ -1,15 +1,10 @@
-export default plugin => {
-  const rawAuth = plugin.controllers.auth({strapi});
+import registerController from './controllers/register';
 
-  const auth = ({strapi}) => {
-    return {
-      ...rawAuth,
-      registerWithTenant: async ctx => {
-        ctx.send({ok: true, user: 'test'});
-      },
-    };
+export default (plugin) => {
+  plugin.controllers.user = {
+    ...plugin.controllers.user,
+    ...registerController,
   };
 
-  plugin.controllers.auth = auth;
   return plugin;
 };
