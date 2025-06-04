@@ -15,6 +15,7 @@ export default plugin => {
     method: 'POST',
     path: '/auth/register-with-tenant',
     handler: 'auth.registerWithTenant',
+    prefix: 'local',
     config: {
       auth: false,
       policies: [],
