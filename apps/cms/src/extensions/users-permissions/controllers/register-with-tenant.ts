@@ -1,5 +1,13 @@
+import slugify from 'slugify';
 import {pick} from 'lodash';
 import {Role} from '../../../types/role.enum';
+
+const generateSlugFromEmail = (email: string) => {
+  const name = email.split('@')[0];
+  const now = new Date();
+  const time = `${now.getHours()}${now.getMinutes()}`;
+  return slugify(`${name}${time}`, {lower: true});
+};
 
 export default async ctx => {
   const {email, password} = ctx.request.body;
@@ -26,9 +34,11 @@ export default async ctx => {
   });
 
   // Tenant létrehozása és összekapcsolás
+  const generatedName = email.split('@')[0] + Date.now().toString().slice(-4);
   const tenant = await strapi.entityService.create('api::tenant.tenant', {
     data: {
-      name: email.split('@')[0],
+      name: generatedName,
+      slug: generateSlugFromEmail(email),
     },
   });
 
