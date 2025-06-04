@@ -55,14 +55,12 @@
     "tenant": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::tenant.tenant"
+      "target": "api::tenant.tenant",
+      "inversedBy": "users"
     },
     "tenantRole": {
       "type": "enumeration",
-      "enum": [
-        "TenantAdmin",
-        "TenantUser"
-      ]
+      "enum": ["TenantAdmin", "TenantUser"]
     }
   }
 }

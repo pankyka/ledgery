@@ -20,7 +20,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "tenant"
+      "mappedBy": "tenant"
     }
   }
 }
