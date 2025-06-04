@@ -1,4 +1,4 @@
-import {factories} from '@strapi/strapi';
+import {pick} from 'lodash';
 import {Role} from '../../../types/role.enum';
 
 export default async ctx => {
@@ -28,7 +28,7 @@ export default async ctx => {
   // Tenant létrehozása és összekapcsolás
   const tenant = await strapi.entityService.create('api::tenant.tenant', {
     data: {
-      name: email.split('@')[0]
+      name: email.split('@')[0],
     },
   });
 
@@ -50,6 +50,6 @@ export default async ctx => {
 
   ctx.send({
     jwt: token,
-    user,
+    user: pick(user, ['id', 'locale', 'email', 'tenantRole', 'role']),
   });
 };
