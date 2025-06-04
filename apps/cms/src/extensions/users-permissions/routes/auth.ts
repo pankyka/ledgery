@@ -12,7 +12,7 @@ export default [
   {
     method: 'POST',
     path: '/auth/register-with-tenant',
-    handler: 'register.registerWithTenant',
+    handler: 'auth.registerWithTenant',
     config: {
       auth: false,
       policies: [],

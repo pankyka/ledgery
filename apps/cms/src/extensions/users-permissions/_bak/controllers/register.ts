@@ -1,6 +1,6 @@
 import { factories } from "@strapi/strapi";
-import { User } from "../../../types/user.interface";
-import { Role } from "../../../types/role.enum";
+import { User } from "../../../../types/user.interface";
+import { Role } from "../../../../types/role.enum";
 
 export default factories.createCoreController(
   "plugin::users-permissions.user",
