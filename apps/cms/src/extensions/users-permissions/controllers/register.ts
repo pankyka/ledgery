@@ -1,11 +1,11 @@
-// import {Strapi} from '@strapi/strapi';
+import {Core} from '@strapi/strapi';
 import {Context} from 'koa';
 import {Role} from '../../../types/role.enum';
 
 export default {
   async registerWithTenant(ctx: Context) {
     const {email, password} = ctx.request.body;
-    const strapi = ctx.strapi; // as Strapi;
+    const strapi = ctx.strapi as Core.Strapi;
 
     if (!email || !password) {
       return ctx.badRequest('Email and password are required');
