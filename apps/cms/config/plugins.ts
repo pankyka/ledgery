@@ -2,6 +2,9 @@ export default ({env}) => ({
   'users-permissions': {
     config: {
       jwtSecret: env('JWT_SECRET'),
+      jwt: {
+        expiresIn: '7d',
+      },
       // providers: {
       //   google: {
       //     clientId: process.env.GOOGLE_CLIENT_ID,
