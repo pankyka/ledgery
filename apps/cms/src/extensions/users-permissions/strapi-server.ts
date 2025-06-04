@@ -1,13 +1,6 @@
-import registerController from './controllers/register';
+import registerWithTenant from './controllers/register-with-tenant';
 
 export default plugin => {
-  console.log('🔁 Registering custom controller: registerWithTenant');
-
-  // plugin.controllers.user = {
-  //   ...plugin.controllers.user,
-  //   ...registerController,
-  // };
-
   // Capture the original factory function for the `auth` controller
   const originalAuthFactory = plugin.controllers.auth;
 
@@ -16,7 +9,7 @@ export default plugin => {
     const originalAuth = originalAuthFactory({strapi});
 
     // Add a custom function to the `auth` controller
-    originalAuth.registerWithTenant = registerController.registerWithTenant;
+    originalAuth.registerWithTenant = registerWithTenant;
 
     return originalAuth;
   };
@@ -30,21 +23,10 @@ export default plugin => {
       auth: false,
       policies: [],
       middlewares: [],
+      routesPrefix: '',
       type: 'content-api',
     },
   });
-
-  setTimeout(() => {
-    const routes = strapi.server.router.stack
-      .filter(layer => layer?.path && layer?.methods?.length)
-      .map(layer => ({
-        method: layer.methods.join(','),
-        path: layer.path,
-      }));
-
-    console.log('📡 Regisztrált útvonalak:');
-    console.table(routes);
-  }, 500); // kell egy kis késleltetés, amíg router kész
 
   return plugin;
 };

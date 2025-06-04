@@ -1,8 +1,7 @@
 import {factories} from '@strapi/strapi';
 import {Role} from '../../../types/role.enum';
 
-export default {
-  async registerWithTenant(ctx) {
+export default async (ctx) => {
     const {email, password} = ctx.request.body;
 
     if (!email || !password) {
@@ -54,5 +53,4 @@ export default {
       jwt: token,
       user,
     });
-  },
-};
+  };
