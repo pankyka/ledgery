@@ -28,8 +28,8 @@ export default async (ctx) => {
     // Tenant létrehozása és összekapcsolás
     const tenant = await strapi.entityService.create('api::tenant.tenant', {
       data: {
-        name: `${email} tenant`,
-        owner: user.id,
+        name: email,
+        users: [user.id],
       },
     });
 
@@ -39,7 +39,7 @@ export default async (ctx) => {
       {
         data: {
           tenant: tenant.id,
-          role: Role.TenantAdmin,
+          tenantRole: Role.TenantAdmin,
         },
       } as any,
     );
