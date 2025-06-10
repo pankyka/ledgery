@@ -5,7 +5,7 @@ import { getUser, getTeamForUser } from '@/lib/strapi/queries';
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-04-30.basil'
-});
+} as any);
 
 export async function createCheckoutSession({
   team,
@@ -47,7 +47,7 @@ export async function createCustomerPortalSession(team: Team) {
     redirect('/pricing');
   }
 
-  let configuration: Stripe.BillingPortal.Configuration;
+  let configuration: Stripe.BillingPortal.Configuration | undefined;
   const configurations = await stripe.billingPortal.configurations.list();
 
   if (configurations.data.length > 0) {
@@ -106,11 +106,11 @@ export async function createCustomerPortalSession(team: Team) {
   return stripe.billingPortal.sessions.create({
     customer: team.stripeCustomerId,
     return_url: `${process.env.BASE_URL}/dashboard`,
-    configuration: configuration.id
+    configuration: configuration?.id
   });
 }
 
-export async function handleSubscriptionChange() {
+export async function handleSubscriptionChange(subscription: any) {
   // Implementation requires Strapi endpoints
   return;
 }
