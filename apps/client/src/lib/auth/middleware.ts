@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { TeamDataWithMembers, User } from '@/lib/db/schema';
-import { getTeamForUser, getUser } from '@/lib/db/queries';
+import { TeamDataWithMembers, User } from '@/lib/strapi/types';
+import { getTeamForUser, getUser } from '@/lib/strapi/queries';
 import { redirect } from 'next/navigation';
 
 export type ActionState = {

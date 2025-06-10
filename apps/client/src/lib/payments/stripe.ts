@@ -1,11 +1,7 @@
 import Stripe from 'stripe';
 import { redirect } from 'next/navigation';
-import { Team } from '@/lib/db/schema';
-import {
-  getTeamByStripeCustomerId,
-  getUser,
-  updateTeamSubscription
-} from '@/lib/db/queries';
+import { TeamDataWithMembers as Team } from '@/lib/strapi/types';
+import { getUser, getTeamForUser } from '@/lib/strapi/queries';
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-04-30.basil'
@@ -114,36 +110,9 @@ export async function createCustomerPortalSession(team: Team) {
   });
 }
 
-export async function handleSubscriptionChange(
-  subscription: Stripe.Subscription
-) {
-  const customerId = subscription.customer as string;
-  const subscriptionId = subscription.id;
-  const status = subscription.status;
-
-  const team = await getTeamByStripeCustomerId(customerId);
-
-  if (!team) {
-    console.error('Team not found for Stripe customer:', customerId);
-    return;
-  }
-
-  if (status === 'active' || status === 'trialing') {
-    const plan = subscription.items.data[0]?.plan;
-    await updateTeamSubscription(team.id, {
-      stripeSubscriptionId: subscriptionId,
-      stripeProductId: plan?.product as string,
-      planName: (plan?.product as Stripe.Product).name,
-      subscriptionStatus: status
-    });
-  } else if (status === 'canceled' || status === 'unpaid') {
-    await updateTeamSubscription(team.id, {
-      stripeSubscriptionId: null,
-      stripeProductId: null,
-      planName: null,
-      subscriptionStatus: status
-    });
-  }
+export async function handleSubscriptionChange() {
+  // Implementation requires Strapi endpoints
+  return;
 }
 
 export async function getStripePrices() {
