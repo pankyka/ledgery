@@ -52,6 +52,7 @@ const signUpSchema = z.object({
 export const signUp = validatedAction(signUpSchema, async (data, formData) => {
   const { email, password } = data;
   try {
+    console.log(email, password);
     await registerWithTenant(email, password);
   } catch (e) {
     return { error: 'Failed to create user. Please try again.', email, password };
