@@ -11,7 +11,14 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["dist/**", "build/**"],
+      "env": [
+        "NEXT_PUBLIC_API_URL",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "BASE_URL",
+        "AUTH_SECRET"
+      ]
     },
     "publish": {
       "dependsOn": ["^build"],
