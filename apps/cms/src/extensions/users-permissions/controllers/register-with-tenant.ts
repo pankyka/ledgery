@@ -3,7 +3,7 @@ import {pick} from 'lodash';
 import {Role} from '../../../types/role.enum';
 
 const generateSlugFromEmail = (email: string) => {
-  const name = email.split('@')[0];
+  const name = email.split('@')[0].replace(/[+]/gi, '-');
   const now = new Date();
   const time = `${now.getHours()}${now.getMinutes()}`;
   return slugify(`${name}${time}`, {lower: true});
