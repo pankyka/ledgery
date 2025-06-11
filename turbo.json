@@ -7,7 +7,15 @@
       "persistent": true
     },
     "start": {
-      "cache": false
+      "cache": false,
+      "env": [
+        "NODE_ENV",
+        "NEXT_PUBLIC_API_URL",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "BASE_URL",
+        "AUTH_SECRET"
+      ]
     },
     "build": {
       "dependsOn": ["^build"],
