@@ -26,6 +26,7 @@ export const signIn = validatedAction(signInSchema, async (data, formData) => {
   try {
     await strapiLogin(email, password);
   } catch (e) {
+    console.error(e);
     return {
       error: 'Invalid email or password. Please try again.',
       email,
@@ -52,7 +53,6 @@ const signUpSchema = z.object({
 export const signUp = validatedAction(signUpSchema, async (data, formData) => {
   const { email, password } = data;
   try {
-    console.log(email, password);
     await registerWithTenant(email, password);
   } catch (e) {
     console.error(e);

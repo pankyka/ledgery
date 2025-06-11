@@ -3,8 +3,6 @@ import { redirect } from 'next/navigation';
 import { TenantWithMembers as Team } from '@/lib/strapi/types';
 import { getUser, getTeamForUser } from '@/lib/strapi/queries';
 
-console.log('[ENV] STRIPE_SECRET_KEY:', process.env.STRIPE_SECRET_KEY);
-
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-04-30.basil'
 } as any);

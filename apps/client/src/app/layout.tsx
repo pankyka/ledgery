@@ -4,8 +4,6 @@ import { Manrope } from 'next/font/google';
 import { getUser, getTeamForUser } from '@/lib/strapi/queries';
 import { SWRConfig } from 'swr';
 
-console.table(process.env);
-
 export const metadata: Metadata = {
   title: 'Next.js SaaS Starter',
   description: 'Get started quickly with Next.js, Postgres, and Stripe.'
