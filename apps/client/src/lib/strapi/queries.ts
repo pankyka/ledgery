@@ -1,6 +1,6 @@
 import { strapiFetch } from './strapi-client';
 import { getJwt } from './api';
-import type { ActivityLog, TeamDataWithMembers, User } from './types';
+import type { ActivityLog, TenantWithMembers, User } from './types';
 
 export async function getUser(): Promise<User | null> {
   const token = await getJwt();
@@ -12,11 +12,11 @@ export async function getUser(): Promise<User | null> {
   }
 }
 
-export async function getTeamForUser(): Promise<TeamDataWithMembers | null> {
+export async function getTeamForUser(): Promise<TenantWithMembers | null> {
   const user = await getUser();
   if (!user || !user.tenant) return null;
   const token = await getJwt();
-  return strapiFetch<TeamDataWithMembers>(
+  return strapiFetch<TenantWithMembers>(
     `/tenants/${typeof user.tenant === 'object' ? user.tenant.id : user.tenant}?populate=teamMembers.user`,
     {},
     token || undefined,

@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 import { redirect } from 'next/navigation';
-import { TeamDataWithMembers as Team } from '@/lib/strapi/types';
+import { TenantWithMembers as Team } from '@/lib/strapi/types';
 import { getUser, getTeamForUser } from '@/lib/strapi/queries';
 
 console.log('[ENV] STRIPE_SECRET_KEY:', process.env.STRIPE_SECRET_KEY);

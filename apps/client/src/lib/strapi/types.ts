@@ -19,7 +19,7 @@ export interface TeamMember {
   role: string;
 }
 
-export interface TeamDataWithMembers extends Tenant {
+export interface TenantWithMembers extends Tenant {
   teamMembers: TeamMember[];
   planName?: string | null;
   subscriptionStatus?: string | null;

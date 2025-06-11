@@ -55,6 +55,7 @@ export const signUp = validatedAction(signUpSchema, async (data, formData) => {
     console.log(email, password);
     await registerWithTenant(email, password);
   } catch (e) {
+    console.error(e);
     return { error: 'Failed to create user. Please try again.', email, password };
   }
 

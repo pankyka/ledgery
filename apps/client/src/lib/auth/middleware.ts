@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { TeamDataWithMembers, User } from '@/lib/strapi/types';
+import { TenantWithMembers, User } from '@/lib/strapi/types';
 import { getTeamForUser, getUser } from '@/lib/strapi/queries';
 import { redirect } from 'next/navigation';
 
@@ -55,7 +55,7 @@ export function validatedActionWithUser<S extends z.ZodType<any, any>, T>(
 
 type ActionWithTeamFunction<T> = (
   formData: FormData,
-  team: TeamDataWithMembers
+  team: TenantWithMembers
 ) => Promise<T>;
 
 export function withTeam<T>(action: ActionWithTeamFunction<T>) {
