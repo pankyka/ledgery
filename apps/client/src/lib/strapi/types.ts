@@ -16,7 +16,7 @@ export interface Tenant {
 export interface TeamMember {
   id: number;
   user: User;
-  role: string;
+  tenantRole: string;
 }
 
 export interface TenantWithMembers extends Tenant {

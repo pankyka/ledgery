@@ -1,6 +1,9 @@
+import {errors, getService} from '@strapi/utils';
 import slugify from 'slugify';
 import {pick} from 'lodash';
 import {Role} from '../../../types/role.enum';
+
+const {ApplicationError, ValidationError, ForbiddenError} = errors;
 
 const generateSlugFromEmail = (email: string) => {
   const name = email.split('@')[0].replace(/[+]/gi, '-');
@@ -9,12 +12,42 @@ const generateSlugFromEmail = (email: string) => {
   return slugify(`${name}${time}`, {lower: true});
 };
 
+const getService = name => {
+  return strapi.plugin('users-permissions').service(name);
+};
+
+const sanitizeUser = (user, ctx) => {
+  const {auth} = ctx.state;
+  const userSchema = strapi.getModel('plugin::users-permissions.user');
+
+  return strapi.contentAPI.sanitize.output(user, userSchema, {auth});
+};
+
 export default async ctx => {
   const provider = ctx.params.provider || 'local';
   const {email, password} = ctx.request.body;
 
+  const pluginStore = await strapi.store({
+    type: 'plugin',
+    name: 'users-permissions',
+  });
+
+  const settings: any = await pluginStore.get({key: 'advanced'});
+
+  if (!settings.allow_register) {
+    throw new ApplicationError('Register action is currently disabled');
+  }
+
   if (!email || !password) {
     return ctx.badRequest('Email and password are required');
+  }
+
+  const role = await strapi
+    .query('plugin::users-permissions.role')
+    .findOne({where: {type: settings.default_role}});
+
+  if (!role) {
+    throw new ApplicationError('Impossible to find the default role');
   }
 
   const existingUser = await strapi
@@ -30,9 +63,10 @@ export default async ctx => {
   let user = await strapi.plugin('users-permissions').service('user').add({
     provider,
     email,
+    role: role.id,
     username: email, // Itt automatizáljuk a username-et
     password,
-    confirmed: true,
+    confirmed: !settings.email_confirmation,
   });
 
   // Tenant létrehozása és összekapcsolás
@@ -54,6 +88,19 @@ export default async ctx => {
       },
     } as any,
   );
+
+  const sanitizedUser = await sanitizeUser(user, ctx);
+
+  if (settings.email_confirmation) {
+    try {
+      await getService('user').sendConfirmationEmail(sanitizedUser);
+    } catch (err) {
+      strapi.log.error(err);
+      throw new ApplicationError('Error sending confirmation email');
+    }
+
+    return ctx.send({user: sanitizedUser});
+  }
 
   // Token generálása
   const token = strapi.plugin('users-permissions').service('jwt').issue({

@@ -12,6 +12,8 @@ export const strapiFetch = async <T = any>(
     },
     cache: 'no-store',
   });
+  console.log(authToken);
+  // console.log(res);
 
   if (!res.ok) {
     throw new Error(`Strapi API error: ${res.statusText}`);
