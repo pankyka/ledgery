@@ -10,6 +10,7 @@ const generateSlugFromEmail = (email: string) => {
 };
 
 export default async ctx => {
+  const provider = ctx.params.provider || 'local';
   const {email, password} = ctx.request.body;
 
   if (!email || !password) {
@@ -27,6 +28,7 @@ export default async ctx => {
   }
 
   let user = await strapi.plugin('users-permissions').service('user').add({
+    provider,
     email,
     username: email, // Itt automatizáljuk a username-et
     password,

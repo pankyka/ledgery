@@ -5,7 +5,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production strapi build",
     "console": "strapi console",
-    "dev": "strapi develop",
+    "dev": "strapi develop --debug",
     "develop": "strapi develop",
     "start": "cross-env NODE_ENV=production strapi start",
     "strapi": "strapi",
