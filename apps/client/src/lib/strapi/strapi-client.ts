@@ -12,7 +12,6 @@ export const strapiFetch = async <T = any>(
     },
     cache: 'no-store',
   });
-  console.log(authToken);
   // console.log(res);
 
   if (!res.ok) {
