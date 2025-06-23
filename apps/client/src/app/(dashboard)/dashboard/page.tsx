@@ -151,7 +151,7 @@ function TeamMembers() {
                     {getUserDisplayName(member.user)}
                   </p>
                   <p className="text-sm text-muted-foreground capitalize">
-                    {member.role}
+                    {member.tenantRole}
                   </p>
                 </div>
               </div>
