@@ -1,4 +1,4 @@
-import {errors, getService} from '@strapi/utils';
+import {errors} from '@strapi/utils';
 import slugify from 'slugify';
 import {pick} from 'lodash';
 import {Role} from '../../../types/role.enum';
