@@ -3107,15 +3107,6 @@
     url-join "4.0.1"
     yup "0.32.9"
 
-"@strapi/provider-email-mailgun@^5.14.0":
-  version "5.15.0"
-  resolved "https://registry.yarnpkg.com/@strapi/provider-email-mailgun/-/provider-email-mailgun-5.15.0.tgz#6e50ded4ba44480fc575e100777f396bf0f0bec5"
-  integrity sha512-6Hgra/hh34OdH8GL0ehNPqgMihJOrrwhyc3nIrkQfeG9Z+mrDCXQlCL2aZlUPT1tRt1l/Ya85QP7licibWAUUg==
-  dependencies:
-    "@strapi/utils" "5.15.0"
-    form-data "^4.0.0"
-    mailgun.js "10.2.1"
-
 "@strapi/provider-email-sendmail@5.14.0":
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/@strapi/provider-email-sendmail/-/provider-email-sendmail-5.14.0.tgz#afd395b94de2e89e93b9933843c3aa3e8c44b43b"
@@ -10066,14 +10057,6 @@ mailcomposer@3.12.0:
     buildmail "3.10.0"
     libmime "2.1.0"
 
-mailgun.js@10.2.1:
-  version "10.2.1"
-  resolved "https://registry.yarnpkg.com/mailgun.js/-/mailgun.js-10.2.1.tgz#411fc39c9d2bd26fcb2445416deab81ebd87044f"
-  integrity sha512-lslXpLdwtLyavJGHsPKlpXLnd3XEuwWY5X/KaTAvv2UvHiOWSlUzqkGW21vVgcQQ9AKw0s5ayS5V9Cv8Ze2OIw==
-  dependencies:
-    axios "^1.6.0"
-    base-64 "^1.0.0"
-    url-join "^4.0.1"
 
 make-dir@^3.0.0:
   version "3.1.0"
