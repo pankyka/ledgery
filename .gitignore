@@ -123,6 +123,8 @@ coverage
 # Strapi
 ############################
 
+_docs
+
 .env
 license.txt
 exports
