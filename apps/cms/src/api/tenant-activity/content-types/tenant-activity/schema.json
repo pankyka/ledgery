@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tenant-activity",
+  "info": {
+    "singularName": "tenant-activity",
+    "pluralName": "tenant-activities",
+    "displayName": "Tenant Activity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "userRoles": {
+      "type": "string"
+    },
+    "tenant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tenant.tenant"
+    },
+    "activity": {
+      "type": "enumeration",
+      "enum": [
+        "SIGN_UP",
+        "SIGN_IN",
+        "SIGN_OUT",
+        "UPDATE_PASSWORD",
+        "DELETE_ACCOUNT",
+        "UPDATE_ACCOUNT",
+        "CREATE_TEAM",
+        "REMOVE_TEAM_MEMBER",
+        "INVITE_TEAM_MEMBER",
+        "ACCEPT_INVITATION"
+      ]
+    }
+  }
+}
