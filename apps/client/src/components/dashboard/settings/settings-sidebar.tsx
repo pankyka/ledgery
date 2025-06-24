@@ -3,10 +3,10 @@
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { User, Users, CreditCard, Activity, Shield } from "lucide-react"
+import Link from "next/link"
 
 interface SettingsSidebarProps {
   activeTab: string
-  onTabChange: (tab: string) => void
 }
 
 const menuItems = [
@@ -14,30 +14,35 @@ const menuItems = [
     id: "general",
     label: "Általános",
     icon: User,
+    href: "/dashboard/settings/general",
   },
   {
     id: "team",
     label: "Csapat",
     icon: Users,
+    href: "/dashboard/settings/team",
   },
   {
     id: "billing",
     label: "Számlázás",
     icon: CreditCard,
+    href: "/dashboard/settings/billing",
   },
   {
     id: "activity",
     label: "Activity",
     icon: Activity,
+    href: "/dashboard/settings/activity",
   },
   {
     id: "security",
     label: "Security",
     icon: Shield,
+    href: "/dashboard/settings/security",
   },
 ]
 
-export function SettingsSidebar({ activeTab, onTabChange }: SettingsSidebarProps) {
+export function SettingsSidebar({ activeTab }: SettingsSidebarProps) {
   return (
     <Card className="p-4">
       <nav className="space-y-2">
@@ -48,10 +53,12 @@ export function SettingsSidebar({ activeTab, onTabChange }: SettingsSidebarProps
               key={item.id}
               variant={activeTab === item.id ? "default" : "ghost"}
               className="w-full justify-start"
-              onClick={() => onTabChange(item.id)}
+              asChild
             >
-              <Icon className="mr-2 h-4 w-4" />
-              {item.label}
+              <Link href={item.href}>
+                <Icon className="mr-2 h-4 w-4" />
+                {item.label}
+              </Link>
             </Button>
           )
         })}
