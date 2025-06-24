@@ -8,7 +8,7 @@ export function LandingPage() {
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <nav className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-gray-900">DashboardApp</div>
+          <div className="text-2xl font-bold text-gray-900">Ledgery</div>
           <div className="space-x-4">
             <Button variant="ghost" asChild>
               <Link href="/auth/login">Belépés</Link>
