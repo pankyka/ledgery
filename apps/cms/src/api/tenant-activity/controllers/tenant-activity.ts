@@ -10,10 +10,11 @@ export default factories.createCoreController(
       }
 
       const tenantId = typeof user.tenant === 'object' ? user.tenant.id : user.tenant;
+      const filterObj: any = ctx.query?.filters || {};
       ctx.query = {
         ...ctx.query,
         filters: {
-          ...(ctx.query?.filters || {}),
+          ...filterObj,
           tenant: tenantId,
         },
       };
