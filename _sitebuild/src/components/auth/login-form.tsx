@@ -62,7 +62,7 @@ export function LoginForm() {
         </form>
         <div className="mt-4 text-center text-sm">
           <span className="text-gray-600">Még nincs fiókja? </span>
-          <Link href="/auth/register" className="text-blue-600 hover:underline">
+          <Link href="/register" className="text-blue-600 hover:underline">
             Regisztráljon itt
           </Link>
         </div>

@@ -14,31 +14,31 @@ const menuItems = [
     id: "general",
     label: "Általános",
     icon: User,
-    href: "/dashboard/settings/general",
+    href: "/settings/general",
   },
   {
     id: "team",
     label: "Csapat",
     icon: Users,
-    href: "/dashboard/settings/team",
+    href: "/settings/team",
   },
   {
     id: "billing",
     label: "Számlázás",
     icon: CreditCard,
-    href: "/dashboard/settings/billing",
+    href: "/settings/billing",
   },
   {
     id: "activity",
     label: "Activity",
     icon: Activity,
-    href: "/dashboard/settings/activity",
+    href: "/settings/activity",
   },
   {
     id: "security",
     label: "Security",
     icon: Shield,
-    href: "/dashboard/settings/security",
+    href: "/settings/security",
   },
 ]
 

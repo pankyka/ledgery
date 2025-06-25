@@ -91,7 +91,7 @@ export function RegisterForm() {
         </form>
         <div className="mt-4 text-center text-sm">
           <span className="text-gray-600">Már van fiókja? </span>
-          <Link href="/auth/login" className="text-blue-600 hover:underline">
+          <Link href="/login" className="text-blue-600 hover:underline">
             Lépjen be itt
           </Link>
         </div>

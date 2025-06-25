@@ -11,10 +11,10 @@ export function LandingPage() {
           <div className="text-2xl font-bold text-gray-900">DashboardApp</div>
           <div className="space-x-4">
             <Button variant="ghost" asChild>
-              <Link href="/auth/login">Belépés</Link>
+              <Link href="/login">Belépés</Link>
             </Button>
             <Button asChild>
-              <Link href="/auth/register">Regisztráció</Link>
+              <Link href="/register">Regisztráció</Link>
             </Button>
           </div>
         </nav>
@@ -30,10 +30,10 @@ export function LandingPage() {
           </p>
           <div className="space-x-4">
             <Button size="lg" asChild>
-              <Link href="/auth/register">Kezdjük el</Link>
+              <Link href="/register">Kezdjük el</Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/auth/login">Már van fiókom</Link>
+              <Link href="/login">Már van fiókom</Link>
             </Button>
           </div>
         </div>

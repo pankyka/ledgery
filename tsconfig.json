@@ -3,6 +3,11 @@
   "compilerOptions": {
     "plugins": [{"name": "next"}]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "apps/cms/src/extensions/users-permissions/strapi-server.ts", "apps/cms/src/extensions/users-permissions/controllers/register-with-tenant.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

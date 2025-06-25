@@ -22,7 +22,7 @@ export function UserMenu() {
 
   const handleSettings = () => {
     // Navigate to settings page
-    router.push("/dashboard/settings")
+    router.push("/settings")
   }
 
   return (

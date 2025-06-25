@@ -1,5 +1,7 @@
-import { LandingPage } from "@/components/landing-page"
+"use client"
 
-export default function Home() {
-  return <LandingPage />
+import { DashboardLayout } from "../src/components/dashboard/dashboard-layout"
+
+export default function SyntheticV0PageForDeployment() {
+  return <DashboardLayout />
 }
