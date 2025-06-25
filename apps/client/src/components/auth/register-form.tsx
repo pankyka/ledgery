@@ -1,6 +1,5 @@
 'use client';
 
-
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -12,9 +11,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ActionState } from '@/lib/auth/middleware';
-import { registerAction } from '@/lib/auth/register-action';
 import Link from 'next/link';
 import { useActionState, useState } from 'react';
+import { registerAction } from './actions';
 
 export function RegisterForm() {
   const [name, setName] = useState('');

@@ -1,6 +1,5 @@
 'use client';
 
-
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -11,10 +10,10 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { loginAction } from '@/lib/auth/login-action';
 import { ActionState } from '@/lib/auth/middleware';
 import Link from 'next/link';
 import { useActionState, useState } from 'react';
+import { loginAction } from './actions';
 
 export function LoginForm() {
   const [email, setEmail] = useState('');

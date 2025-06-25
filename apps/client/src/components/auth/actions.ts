@@ -38,10 +38,6 @@ export const loginAction = validatedAction(
   },
 );
 
-export async function logoutAction() {
-  await clearJwt();
-}
-
 const registerSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),

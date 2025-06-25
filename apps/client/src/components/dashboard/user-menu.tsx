@@ -1,7 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { User, Settings, LogOut } from 'lucide-react';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -10,15 +9,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { LogOut, Settings, User } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { logoutAction } from './actions';
 
 export function UserMenu() {
   const router = useRouter();
-
-  const handleLogout = () => {
-    // Mock logout - replace with real authentication logout
-    router.push('/');
-  };
 
   const handleSettings = () => {
     // Navigate to settings page
@@ -51,7 +47,7 @@ export function UserMenu() {
           <span>Beállítások</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+        <DropdownMenuItem onClick={logoutAction} className="cursor-pointer">
           <LogOut className="mr-2 h-4 w-4" />
           <span>Kilépés</span>
         </DropdownMenuItem>
