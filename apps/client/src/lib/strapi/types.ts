@@ -27,10 +27,11 @@ export interface TenantWithMembers extends Tenant {
 
 export interface ActivityLog {
   id: number;
-  action: string;
+  activity: ActivityType | string;
   timestamp: string | Date;
-  ipAddress?: string;
-  userName?: string;
+  user?: number | User;
+  tenant?: number | Tenant;
+  userRoles?: string;
 }
 
 export enum ActivityType {

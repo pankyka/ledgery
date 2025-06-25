@@ -89,6 +89,12 @@ export default async ctx => {
     } as any,
   );
 
+  await strapi.service('api::tenant-activity.tenant-activity').log({
+    user,
+    tenant,
+    action: 'SIGN_UP',
+  });
+
   const sanitizedUser = await sanitizeUser(user, ctx);
 
   if (settings.email_confirmation) {
