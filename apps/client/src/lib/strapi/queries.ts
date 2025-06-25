@@ -26,6 +26,13 @@ export async function getTeamForUser(): Promise<TenantWithMembers | null> {
 }
 
 export async function getActivityLogs(): Promise<ActivityLog[]> {
+  const user = await getUser();
+  if (!user || !user.tenant) return [];
+  const tenantId = typeof user.tenant === 'object' ? user.tenant.id : user.tenant;
   const token = await getJwt();
-  return strapiFetch<ActivityLog[]>('/activity-logs', {}, token || undefined);
+  return strapiFetch<ActivityLog[]>(
+    `/tenant-activities?filters[tenant]=${tenantId}&sort=timestamp:desc`,
+    {},
+    token || undefined,
+  );
 }
