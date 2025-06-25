@@ -19,15 +19,15 @@ export interface ITeamMember {
   tenantRole: string;
 }
 
-export interface TenantWithMembers extends ITenant {
+export interface ITenantWithMembers extends ITenant {
   teamMembers: ITeamMember[];
   planName?: string | null;
   subscriptionStatus?: string | null;
 }
 
-export interface ActivityLog {
+export interface IActivityLog {
   id: number;
-  activity: ActivityType | string;
+  activity: ActivityAction | string;
   timestamp: string | Date;
   user?: number | IUser;
   tenant?: number | ITenant;
@@ -35,14 +35,21 @@ export interface ActivityLog {
 }
 
 export enum ActivityType {
-  SIGN_UP = 'SIGN_UP',
-  SIGN_IN = 'SIGN_IN',
-  SIGN_OUT = 'SIGN_OUT',
-  UPDATE_PASSWORD = 'UPDATE_PASSWORD',
-  DELETE_ACCOUNT = 'DELETE_ACCOUNT',
-  UPDATE_ACCOUNT = 'UPDATE_ACCOUNT',
-  CREATE_TEAM = 'CREATE_TEAM',
-  REMOVE_TEAM_MEMBER = 'REMOVE_TEAM_MEMBER',
-  INVITE_TEAM_MEMBER = 'INVITE_TEAM_MEMBER',
-  ACCEPT_INVITATION = 'ACCEPT_INVITATION',
+  'AUTH',
+  'PROFIL',
+  'TEAM',
+  'SETTINGS',
+}
+
+export enum ActivityAction {
+  'SIGN_UP',
+  'SIGN_IN',
+  'SIGN_OUT',
+  'UPDATE_PASSWORD',
+  'DELETE_ACCOUNT',
+  'UPDATE_ACCOUNT',
+  'CREATE_TEAM',
+  'REMOVE_TEAM_MEMBER',
+  'INVITE_TEAM_MEMBER',
+  'ACCEPT_INVITATION',
 }

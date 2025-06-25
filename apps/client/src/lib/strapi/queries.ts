@@ -1,22 +1,23 @@
 import { strapiFetch } from './strapi-client';
 import { getJwt } from './api';
-import type { ActivityLog, TenantWithMembers, User } from './types';
+import type { IActivityLog, ITenantWithMembers, IUser } from './types';
 
-export async function getUser(): Promise<User | null> {
+export async function getUser(): Promise<IUser | null> {
   const token = await getJwt();
   if (!token) return null;
   try {
-    return await strapiFetch<User>('/users/me', {}, token);
-  } catch {
+    const u = await strapiFetch<IUser>('/users/me', {}, token);
+    return u;
+  } catch (err) {
     return null;
   }
 }
 
-export async function getTeamForUser(): Promise<TenantWithMembers | null> {
+export async function getTeamForUser(): Promise<ITenantWithMembers | null> {
   const user = await getUser();
   if (!user || !user.tenant) return null;
   const token = await getJwt();
-  return strapiFetch<TenantWithMembers>(
+  return strapiFetch<ITenantWithMembers>(
     `/tenants/${
       typeof user.tenant === 'object' ? user.tenant.id : user.tenant
     }?populate=teamMembers.user`,
@@ -25,12 +26,12 @@ export async function getTeamForUser(): Promise<TenantWithMembers | null> {
   );
 }
 
-export async function getActivityLogs(): Promise<ActivityLog[]> {
+export async function getActivityLogs(): Promise<IActivityLog[]> {
   const user = await getUser();
   if (!user || !user.tenant) return [];
   const tenantId = typeof user.tenant === 'object' ? user.tenant.id : user.tenant;
   const token = await getJwt();
-  return strapiFetch<ActivityLog[]>(
+  return strapiFetch<IActivityLog[]>(
     `/tenant-activities?filters[tenant]=${tenantId}&sort=timestamp:desc`,
     {},
     token || undefined,

@@ -28,6 +28,10 @@
       "relation": "manyToOne",
       "target": "api::tenant.tenant"
     },
+    "activityType": {
+      "type": "enumeration",
+      "enum": ["AUTH", "PROFIL", "TEAM", "SETTINGS"]
+    },
     "activity": {
       "type": "enumeration",
       "enum": [

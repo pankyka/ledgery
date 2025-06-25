@@ -1,8 +1,12 @@
+import { ActivityAction } from '../../../types/activity-action.enum';
+import { ActivityType } from '../../../types/activity-type.enum';
+
 export default {
   async log(
     user: number | { id: number },
     tenant: number | { id: number },
-    action: string,
+    activityType: ActivityType,
+    activity: ActivityAction,
     ipAddress?: string,
   ) {
     const userId = typeof user === 'object' && user !== null ? user.id : user;
@@ -13,7 +17,8 @@ export default {
       timestamp: new Date(),
       user: userId,
       tenant: tenantId,
-      activity: action,
+      activityType,
+      activity,
     };
 
     if (ipAddress) {

@@ -8,7 +8,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 
 export function GeneralSettings() {
   return (
@@ -22,11 +21,11 @@ export function GeneralSettings() {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="firstName">Keresztnév</Label>
-              <Input id="firstName" defaultValue="János" />
+              <Input id="firstName" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="lastName">Vezetéknév</Label>
-              <Input id="lastName" defaultValue="Kovács" />
+              <Input id="lastName" />
             </div>
           </div>
           <div className="space-y-2">
@@ -34,16 +33,11 @@ export function GeneralSettings() {
             <Input
               id="email"
               type="email"
-              defaultValue="janos.kovacs@email.com"
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone">Telefonszám</Label>
             <Input id="phone" type="tel" defaultValue="+36 30 123 4567" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="bio">Bemutatkozás</Label>
-            <Textarea id="bio" placeholder="Írjon magáról..." />
           </div>
           <Button>Mentés</Button>
         </CardContent>
@@ -51,21 +45,21 @@ export function GeneralSettings() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Szervezet információk</CardTitle>
-          <CardDescription>Szervezete alapvető adatai</CardDescription>
+          <CardTitle>Számlázási adatok</CardTitle>
+          {/* <CardDescription>abc</CardDescription> */}
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="orgName">Szervezet neve</Label>
-            <Input id="orgName" defaultValue="Példa Kft." />
+            <Label htmlFor="orgName">Cégnév</Label>
+            <Input id="orgName" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="orgWebsite">Weboldal</Label>
-            <Input id="orgWebsite" type="url" defaultValue="https://pelda.hu" />
+            <Label htmlFor="orgTaxNumber">Adószám</Label>
+            <Input id="orgTaxNumber" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="orgDescription">Leírás</Label>
-            <Textarea id="orgDescription" placeholder="Szervezet leírása..." />
+            <Label htmlFor="orgAddress">Székhely</Label>
+            <Input id="orgAddress" />
           </div>
           <Button>Mentés</Button>
         </CardContent>
