@@ -16,8 +16,6 @@ import { useActionState, useState } from 'react';
 import { registerAction } from './actions';
 
 export function RegisterForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -38,34 +36,30 @@ export function RegisterForm() {
         <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Teljes név</Label>
-          <Input
-            id="name"
-            name="name"
-            type="text"
+            <Input
+              id="name"
+              name="name"
+              type="text"
               placeholder="Kovács János"
-              value={name}
-              onChange={e => setName(e.target.value)}
               required
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email cím</Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
+            <Input
+              id="email"
+              name="email"
+              type="email"
               placeholder="pelda@email.com"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
               required
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Jelszó</Label>
-          <Input
-            id="password"
-            name="password"
-            type="password"
+            <Input
+              id="password"
+              name="password"
+              type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
@@ -73,10 +67,10 @@ export function RegisterForm() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="confirmPassword">Jelszó megerősítése</Label>
-          <Input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
               value={confirmPassword}
               onChange={e => setConfirmPassword(e.target.value)}
               required

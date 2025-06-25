@@ -12,13 +12,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ActionState } from '@/lib/auth/middleware';
 import Link from 'next/link';
-import { useActionState, useState } from 'react';
+import { useActionState } from 'react';
 import { loginAction } from './actions';
 
 export function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   const [state, formAction, pending] = useActionState<ActionState, FormData>(
     loginAction,
     { error: '' },
@@ -36,26 +33,17 @@ export function LoginForm() {
         <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email cím</Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="pelda@email.com"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="pelda@email.com"
               required
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Jelszó</Label>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-            />
+            <Input id="password" name="password" type="password" required />
           </div>
           <Button type="submit" className="w-full" disabled={pending}>
             {pending ? 'Belépés...' : 'Belépés'}
