@@ -36,10 +36,11 @@ export function LoginForm() {
         <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email cím</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="pelda@email.com"
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="pelda@email.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
@@ -47,10 +48,11 @@ export function LoginForm() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Jelszó</Label>
-            <Input
-              id="password"
-              type="password"
-              value={password}
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            value={password}
               onChange={e => setPassword(e.target.value)}
               required
             />
