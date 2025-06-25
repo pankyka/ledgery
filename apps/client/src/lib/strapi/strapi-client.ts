@@ -7,7 +7,7 @@ export const strapiFetch = async <T = any>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...(authToken ? {Authorization: `Bearer ${authToken}`} : {}),
+      ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
       ...(options.headers || {}),
     },
     cache: 'no-store',

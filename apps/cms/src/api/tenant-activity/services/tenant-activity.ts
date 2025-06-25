@@ -6,7 +6,8 @@ export default {
     ipAddress?: string,
   ) {
     const userId = typeof user === 'object' && user !== null ? user.id : user;
-    const tenantId = typeof tenant === 'object' && tenant !== null ? tenant.id : tenant;
+    const tenantId =
+      typeof tenant === 'object' && tenant !== null ? tenant.id : tenant;
 
     const data: Record<string, any> = {
       timestamp: new Date(),

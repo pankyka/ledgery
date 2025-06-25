@@ -1,4 +1,4 @@
-export default ({env}) => {
+export default ({ env }) => {
   const dbUrl = env('DATABASE_URL');
 
   console.log('ENV NODE_ENV:', env('NODE_ENV'));

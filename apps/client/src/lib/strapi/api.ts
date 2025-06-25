@@ -20,21 +20,15 @@ export async function clearJwt() {
 }
 
 export async function login(email: string, password: string) {
-  const data = await strapiFetch<{ jwt: string; user: any }>(
-    '/auth/local',
-    {
-      method: 'POST',
-      body: JSON.stringify({ identifier: email, password }),
-    },
-  );
+  const data = await strapiFetch<{ jwt: string; user: any }>('/auth/local', {
+    method: 'POST',
+    body: JSON.stringify({ identifier: email, password }),
+  });
   await setJwt(data.jwt);
   return data;
 }
 
-export async function registerWithTenant(
-  email: string,
-  password: string,
-) {
+export async function registerWithTenant(email: string, password: string) {
   const data = await strapiFetch<{ jwt: string; user: any }>(
     '/auth/local/register-with-tenant',
     {
@@ -58,7 +52,11 @@ export async function getCurrentUser() {
 
 export async function fetchTenant(id: string | number) {
   const token = await getJwt();
-  return strapiFetch<any>(`/tenants/${id}?populate=deep`, {}, token || undefined);
+  return strapiFetch<any>(
+    `/tenants/${id}?populate=deep`,
+    {},
+    token || undefined,
+  );
 }
 
 export async function fetchInvoices() {

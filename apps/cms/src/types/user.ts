@@ -1,4 +1,4 @@
-import {Tenant} from './tenant.interface';
+import { Tenant } from './tenant.interface';
 
 export type TenantRole = 'TenantAdmin' | 'TenantUser';
 

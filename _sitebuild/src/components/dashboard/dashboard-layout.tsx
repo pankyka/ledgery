@@ -1,8 +1,8 @@
-import type React from "react"
-import { Navbar } from "./navbar"
+import type React from 'react';
+import { Navbar } from './navbar';
 
 interface DashboardLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
@@ -11,5 +11,5 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       <Navbar />
       <main className="container mx-auto px-4 py-8">{children}</main>
     </div>
-  )
+  );
 }

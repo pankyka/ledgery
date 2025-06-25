@@ -1,29 +1,29 @@
-"use client"
+'use client';
 
-import { useRouter } from "next/navigation"
-import { User, Settings, LogOut } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useRouter } from 'next/navigation';
+import { User, Settings, LogOut } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 export function UserMenu() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLogout = () => {
     // Mock logout - replace with real authentication logout
-    router.push("/")
-  }
+    router.push('/');
+  };
 
   const handleSettings = () => {
     // Navigate to settings page
-    router.push("/settings")
-  }
+    router.push('/settings');
+  };
 
   return (
     <DropdownMenu>
@@ -40,7 +40,9 @@ export function UserMenu() {
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
             <p className="font-medium">Felhasználó</p>
-            <p className="w-[200px] truncate text-sm text-muted-foreground">felhasznalo@email.com</p>
+            <p className="w-[200px] truncate text-sm text-muted-foreground">
+              felhasznalo@email.com
+            </p>
           </div>
         </div>
         <DropdownMenuSeparator />
@@ -55,5 +57,5 @@ export function UserMenu() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import type {Core} from '@strapi/strapi';
+import type { Core } from '@strapi/strapi';
 
 export default async function createTenantRoles(strapi: Core.Strapi) {
   const existing = await strapi.db
     .query('plugin::users-permissions.role')
     .findOne({
-      where: {name: 'TenantAdmin'},
+      where: { name: 'TenantAdmin' },
     });
 
   if (!existing) {
@@ -23,7 +23,7 @@ export default async function createTenantRoles(strapi: Core.Strapi) {
   const existing2 = await strapi.db
     .query('plugin::users-permissions.role')
     .findOne({
-      where: {name: 'TenantUser'},
+      where: { name: 'TenantUser' },
     });
 
   if (!existing2) {

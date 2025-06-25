@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { UserMenu } from "./user-menu"
+import Link from 'next/link';
+import { UserMenu } from './user-menu';
 
 export function Navbar() {
   return (
@@ -35,5 +35,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

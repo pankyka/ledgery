@@ -15,7 +15,7 @@
       "required": true,
       "unique": true
     },
-    "slug": {"type": "uid", "targetField": "name"},
+    "slug": { "type": "uid", "targetField": "name" },
     "users": {
       "type": "relation",
       "relation": "oneToMany",

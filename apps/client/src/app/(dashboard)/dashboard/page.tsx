@@ -1,5 +1,11 @@
-import { DashboardLayout } from "@/components/dashboard/dashboard-layout"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { DashboardLayout } from '@/components/dashboard/dashboard-layout';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 export default function DashboardPage() {
   return (
@@ -52,12 +58,13 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <p className="text-gray-600">
-              Ez egy üres dashboard. Itt jeleníthetők meg a különböző modulok és funkciók. A navigation bar segítségével
-              navigálhat a különböző oldalak között.
+              Ez egy üres dashboard. Itt jeleníthetők meg a különböző modulok és
+              funkciók. A navigation bar segítségével navigálhat a különböző
+              oldalak között.
             </p>
           </CardContent>
         </Card>
       </div>
     </DashboardLayout>
-  )
+  );
 }

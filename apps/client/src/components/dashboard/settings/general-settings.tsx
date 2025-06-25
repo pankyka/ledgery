@@ -1,8 +1,14 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
 export function GeneralSettings() {
   return (
@@ -25,7 +31,11 @@ export function GeneralSettings() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email cím</Label>
-            <Input id="email" type="email" defaultValue="janos.kovacs@email.com" />
+            <Input
+              id="email"
+              type="email"
+              defaultValue="janos.kovacs@email.com"
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone">Telefonszám</Label>
@@ -61,5 +71,5 @@ export function GeneralSettings() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

@@ -1,48 +1,42 @@
-"use client"
+'use client';
 
-import type React from "react"
 
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { ActionState } from '@/lib/auth/middleware';
+import { registerAction } from '@/lib/auth/register-action';
+import Link from 'next/link';
+import { useActionState, useState } from 'react';
 
 export function RegisterForm() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (password !== confirmPassword) {
-      alert("A jelszavak nem egyeznek!")
-      return
-    }
-
-    setIsLoading(true)
-
-    // Mock registration - replace with real authentication
-    setTimeout(() => {
-      setIsLoading(false)
-      router.push("/dashboard")
-    }, 1000)
-  }
+  const [state, formAction, pending] = useActionState<ActionState, FormData>(
+    registerAction,
+    { error: '' },
+  );
 
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Regisztráció</CardTitle>
-        <CardDescription>Hozzon létre egy új fiókot a kezdéshez</CardDescription>
+        <CardDescription>
+          Hozzon létre egy új fiókot a kezdéshez
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Teljes név</Label>
             <Input
@@ -50,7 +44,7 @@ export function RegisterForm() {
               type="text"
               placeholder="Kovács János"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={e => setName(e.target.value)}
               required
             />
           </div>
@@ -61,7 +55,7 @@ export function RegisterForm() {
               type="email"
               placeholder="pelda@email.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               required
             />
           </div>
@@ -71,7 +65,7 @@ export function RegisterForm() {
               id="password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               required
             />
           </div>
@@ -81,12 +75,12 @@ export function RegisterForm() {
               id="confirmPassword"
               type="password"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={e => setConfirmPassword(e.target.value)}
               required
             />
           </div>
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Regisztráció..." : "Regisztráció"}
+          <Button type="submit" className="w-full" disabled={pending}>
+            {pending ? 'Regisztráció...' : 'Regisztráció'}
           </Button>
         </form>
         <div className="mt-4 text-center text-sm">
@@ -102,5 +96,5 @@ export function RegisterForm() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

@@ -1,15 +1,15 @@
-import {errors} from '@strapi/utils';
+import { errors } from '@strapi/utils';
 import slugify from 'slugify';
-import {pick} from 'lodash';
-import {Role} from '../../../types/role.enum';
+import { pick } from 'lodash';
+import { Role } from '../../../types/role.enum';
 
-const {ApplicationError, ValidationError, ForbiddenError} = errors;
+const { ApplicationError, ValidationError, ForbiddenError } = errors;
 
 const generateSlugFromEmail = (email: string) => {
   const name = email.split('@')[0].replace(/[+]/gi, '-');
   const now = new Date();
   const time = `${now.getHours()}${now.getMinutes()}`;
-  return slugify(`${name}${time}`, {lower: true});
+  return slugify(`${name}${time}`, { lower: true });
 };
 
 const getService = name => {
@@ -17,22 +17,22 @@ const getService = name => {
 };
 
 const sanitizeUser = (user, ctx) => {
-  const {auth} = ctx.state;
+  const { auth } = ctx.state;
   const userSchema = strapi.getModel('plugin::users-permissions.user');
 
-  return strapi.contentAPI.sanitize.output(user, userSchema, {auth});
+  return strapi.contentAPI.sanitize.output(user, userSchema, { auth });
 };
 
 export default async ctx => {
   const provider = ctx.params.provider || 'local';
-  const {email, password} = ctx.request.body;
+  const { email, password } = ctx.request.body;
 
   const pluginStore = await strapi.store({
     type: 'plugin',
     name: 'users-permissions',
   });
 
-  const settings: any = await pluginStore.get({key: 'advanced'});
+  const settings: any = await pluginStore.get({ key: 'advanced' });
 
   if (!settings.allow_register) {
     throw new ApplicationError('Register action is currently disabled');
@@ -44,7 +44,7 @@ export default async ctx => {
 
   const role = await strapi
     .query('plugin::users-permissions.role')
-    .findOne({where: {type: settings.default_role}});
+    .findOne({ where: { type: settings.default_role } });
 
   if (!role) {
     throw new ApplicationError('Impossible to find the default role');
@@ -53,7 +53,7 @@ export default async ctx => {
   const existingUser = await strapi
     .query('plugin::users-permissions.user')
     .findOne({
-      where: {email},
+      where: { email },
     });
 
   if (existingUser) {
@@ -99,7 +99,7 @@ export default async ctx => {
       throw new ApplicationError('Error sending confirmation email');
     }
 
-    return ctx.send({user: sanitizedUser});
+    return ctx.send({ user: sanitizedUser });
   }
 
   // Token generálása

@@ -1,5 +1,5 @@
-import { ActivitySettings } from "@/components/dashboard/settings/activity-settings"
+import { ActivitySettings } from '@/components/dashboard/settings/activity-settings';
 
 export default function ActivitySettingsPage() {
-  return <ActivitySettings />
+  return <ActivitySettings />;
 }

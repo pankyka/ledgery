@@ -3,8 +3,8 @@ import registerWithTenant from './controllers/register-with-tenant';
 export default plugin => {
   const originalAuthFactory = plugin.controllers.auth;
 
-  plugin.controllers.auth = ({strapi}) => {
-    const originalAuth = originalAuthFactory({strapi});
+  plugin.controllers.auth = ({ strapi }) => {
+    const originalAuth = originalAuthFactory({ strapi });
 
     originalAuth.registerWithTenant = registerWithTenant;
 

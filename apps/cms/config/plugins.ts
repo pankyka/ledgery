@@ -1,15 +1,15 @@
-export default ({env}) => ({
+export default ({ env }) => ({
   email: {
     config: {
       provider: 'strapi-provider-email-resend',
       providerOptions: {
-        apiKey: env('RESEND_API_KEY')
-      }
+        apiKey: env('RESEND_API_KEY'),
+      },
     },
     settings: {
       defaultFrom: env('EMAIL_FROM'),
-      defaultReplyTo: env('EMAIL_REPLY_TO', env('EMAIL_FROM'))
-    }
+      defaultReplyTo: env('EMAIL_REPLY_TO', env('EMAIL_FROM')),
+    },
   },
   'users-permissions': {
     config: {
