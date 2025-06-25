@@ -1,26 +1,26 @@
-export interface User {
+export interface IUser {
   id: number;
   email: string;
   name?: string;
-  tenant?: number | Tenant;
+  tenant?: number | ITenant;
   [key: string]: any;
 }
 
-export interface Tenant {
+export interface ITenant {
   id: number;
   name: string;
   slug?: string;
   [key: string]: any;
 }
 
-export interface TeamMember {
+export interface ITeamMember {
   id: number;
-  user: User;
+  user: IUser;
   tenantRole: string;
 }
 
-export interface TenantWithMembers extends Tenant {
-  teamMembers: TeamMember[];
+export interface TenantWithMembers extends ITenant {
+  teamMembers: ITeamMember[];
   planName?: string | null;
   subscriptionStatus?: string | null;
 }
@@ -29,8 +29,8 @@ export interface ActivityLog {
   id: number;
   activity: ActivityType | string;
   timestamp: string | Date;
-  user?: number | User;
-  tenant?: number | Tenant;
+  user?: number | IUser;
+  tenant?: number | ITenant;
   userRoles?: string;
 }
 

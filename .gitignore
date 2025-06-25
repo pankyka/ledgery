@@ -124,6 +124,7 @@ coverage
 ############################
 
 _docs
+client_backup
 
 .env
 license.txt

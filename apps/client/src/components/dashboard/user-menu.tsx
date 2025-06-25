@@ -1,6 +1,7 @@
 'use client';
 
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import useSWR from 'swr';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -12,9 +13,12 @@ import {
 import { LogOut, Settings, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { logoutAction } from './actions';
+import { fetcher } from '@/lib/utils';
+import { IUser } from '@/lib/strapi/types';
 
 export function UserMenu() {
   const router = useRouter();
+  const { data: user } = useSWR<IUser>('/api/user', fetcher);
 
   const handleSettings = () => {
     // Navigate to settings page
@@ -26,8 +30,12 @@ export function UserMenu() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
+            <AvatarImage alt={user?.name || ''} />
             <AvatarFallback>
-              <User className="h-4 w-4" />
+              {user?.email
+                .split(' ')
+                .map(n => n[0])
+                .join('')}
             </AvatarFallback>
           </Avatar>
         </Button>
@@ -35,9 +43,9 @@ export function UserMenu() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
-            <p className="font-medium">Felhasználó</p>
+            <p className="font-medium">{user?.name}</p>
             <p className="w-[200px] truncate text-sm text-muted-foreground">
-              felhasznalo@email.com
+              {user?.email}
             </p>
           </div>
         </div>
