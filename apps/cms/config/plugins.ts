@@ -5,10 +5,10 @@ export default ({ env }) => ({
       providerOptions: {
         apiKey: env('RESEND_API_KEY'),
       },
-    },
-    settings: {
-      defaultFrom: env('EMAIL_FROM'),
-      defaultReplyTo: env('EMAIL_REPLY_TO', env('EMAIL_FROM')),
+      settings: {
+        defaultFrom: env('EMAIL_FROM'),
+        defaultReplyTo: env('EMAIL_REPLY_TO', env('EMAIL_FROM')),
+      },
     },
   },
   'users-permissions': {
