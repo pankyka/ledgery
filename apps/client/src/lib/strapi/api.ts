@@ -66,6 +66,29 @@ export async function fetchInvoices() {
   return strapiFetch<any>('/invoices', {}, token || undefined);
 }
 
+export async function saveUserDetail(
+  userId: number,
+  data: Record<string, any>,
+) {
+  const token = await getJwt();
+  const user = await strapiFetch<any>(
+    `/users/${userId}?populate=userDetail`,
+    {},
+    token || undefined,
+  );
+  const detailId = user.userDetail?.id;
+  if (detailId) {
+    return strapiFetch(`/user-details/${detailId}`, {
+      method: 'PUT',
+      body: JSON.stringify({ data }),
+    }, token || undefined);
+  }
+  return strapiFetch('/user-details', {
+    method: 'POST',
+    body: JSON.stringify({ data: { ...data, user: userId } }),
+  }, token || undefined);
+}
+
 export async function postActivity(
   activityType: ActivityType,
   activity: ActivityAction,

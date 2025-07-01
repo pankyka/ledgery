@@ -1,4 +1,5 @@
 import { Tenant } from './tenant.interface';
+import { UserDetail } from './user-detail.interface';
 
 export type TenantRole = 'TenantAdmin' | 'TenantUser';
 
@@ -11,4 +12,5 @@ export interface User {
   provider: string;
   tenant?: Tenant;
   tenantRole?: TenantRole;
+  userDetail?: UserDetail;
 }

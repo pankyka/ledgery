@@ -6,7 +6,7 @@ export async function getUser(): Promise<IUser | null> {
   const token = await getJwt();
   if (!token) return null;
   try {
-    const u = await strapiFetch<IUser>('/users/me', {}, token);
+    const u = await strapiFetch<IUser>('/users/me?populate=userDetail', {}, token);
     return u;
   } catch (err) {
     return null;

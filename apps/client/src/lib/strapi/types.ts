@@ -1,8 +1,19 @@
+export interface IUserDetail {
+  id: number;
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  companyName?: string;
+  taxNumber?: string;
+  headquarters?: string;
+}
+
 export interface IUser {
   id: number;
   email: string;
   name?: string;
   tenant?: number | ITenant;
+  userDetail?: number | IUserDetail;
   [key: string]: any;
 }
 
