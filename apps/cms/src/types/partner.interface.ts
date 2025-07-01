@@ -1,6 +1,6 @@
 export interface Partner {
   name: string;
-  taxNumber: string;
+  orgTaxNumber: string;
   countryCode: string;
   postalCode: string;
   city: string;

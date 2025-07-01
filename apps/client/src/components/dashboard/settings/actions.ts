@@ -8,9 +8,9 @@ const detailsSchema = z.object({
   firstName: z.string().optional(),
   lastName: z.string().optional(),
   phone: z.string().optional(),
-  companyName: z.string().optional(),
-  taxNumber: z.string().optional(),
-  headquarters: z.string().optional(),
+  orgName: z.string().optional(),
+  orgTaxNumber: z.string().optional(),
+  orgAddress: z.string().optional(),
 });
 
 export const saveGeneralSettings = validatedActionWithUser(

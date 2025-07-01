@@ -1,7 +1,6 @@
+import { TenantRole } from './tenant-role.enum';
 import { Tenant } from './tenant.interface';
 import { UserDetail } from './user-detail.interface';
-
-export type TenantRole = 'TenantAdmin' | 'TenantUser';
 
 export interface User {
   id: number;

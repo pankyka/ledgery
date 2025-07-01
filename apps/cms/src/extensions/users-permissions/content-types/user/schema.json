@@ -60,7 +60,7 @@
     },
     "tenantRole": {
       "type": "enumeration",
-      "enum": ["TenantAdmin", "TenantUser"]
+      "enum": ["TenantOwner", "TenantAdmin", "TenantUser", "TenantViewer"]
     },
     "userDetail": {
       "type": "relation",

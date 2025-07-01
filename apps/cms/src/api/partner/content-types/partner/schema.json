@@ -14,7 +14,7 @@
     "name": {
       "type": "string"
     },
-    "taxNumber": {
+    "orgTaxNumber": {
       "type": "string"
     },
     "countryCode": {

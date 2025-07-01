@@ -3,9 +3,9 @@ export interface IUserDetail {
   firstName?: string;
   lastName?: string;
   phone?: string;
-  companyName?: string;
-  taxNumber?: string;
-  headquarters?: string;
+  orgName?: string;
+  orgTaxNumber?: string;
+  orgAddress?: string;
 }
 
 export interface IUser {

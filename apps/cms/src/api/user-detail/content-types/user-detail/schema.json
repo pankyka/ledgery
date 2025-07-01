@@ -14,9 +14,9 @@
     "firstName": { "type": "string" },
     "lastName": { "type": "string" },
     "phone": { "type": "string" },
-    "companyName": { "type": "string" },
-    "taxNumber": { "type": "string" },
-    "headquarters": { "type": "string" },
+    "orgName": { "type": "string" },
+    "orgTaxNumber": { "type": "string" },
+    "orgAddress": { "type": "string" },
     "user": {
       "type": "relation",
       "relation": "oneToOne",

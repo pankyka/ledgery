@@ -1,7 +1,7 @@
 import { errors } from '@strapi/utils';
 import slugify from 'slugify';
 import { pick } from 'lodash';
-import { Role } from '../../../types/role.enum';
+import { TenantRole } from '../../../types/tenant-role.enum';
 
 const { ApplicationError, ValidationError, ForbiddenError } = errors;
 
@@ -84,7 +84,7 @@ export default async ctx => {
     {
       data: {
         tenant: tenant.id,
-        tenantRole: Role.TenantAdmin,
+        tenantRole: TenantRole.TenantOwner,
       },
     } as any,
   );

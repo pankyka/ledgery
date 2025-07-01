@@ -55,16 +55,16 @@ export function GeneralSettings() {
         <CardContent className="space-y-4">
           <form action={formAction} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="companyName">Cégnév</Label>
-              <Input id="companyName" name="companyName" />
+              <Label htmlFor="orgName">Cégnév</Label>
+              <Input id="orgName" name="orgName" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="taxNumber">Adószám</Label>
-              <Input id="taxNumber" name="taxNumber" />
+              <Label htmlFor="orgTaxNumber">Adószám</Label>
+              <Input id="orgTaxNumber" name="orgTaxNumber" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="headquarters">Székhely</Label>
-              <Input id="headquarters" name="headquarters" />
+              <Label htmlFor="orgAddress">Székhely</Label>
+              <Input id="orgAddress" name="orgAddress" />
             </div>
             <Button type="submit" disabled={pending}>Mentés</Button>
           </form>
