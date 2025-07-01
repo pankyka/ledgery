@@ -33,8 +33,8 @@ export function UserMenu() {
             <AvatarImage alt={user?.name || ''} />
             <AvatarFallback>
               {user?.email
-                .split(' ')
-                .map(n => n[0])
+                .split('')
+                .slice(0, 2)
                 .join('')}
             </AvatarFallback>
           </Avatar>

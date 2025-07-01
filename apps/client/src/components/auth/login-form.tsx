@@ -14,6 +14,8 @@ import { ActionState } from '@/lib/auth/middleware';
 import Link from 'next/link';
 import { useActionState } from 'react';
 import { loginAction } from './actions';
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import { unauthorized } from 'next/navigation';
 
 export function LoginForm() {
   const [state, formAction, pending] = useActionState<ActionState, FormData>(
@@ -33,18 +35,20 @@ export function LoginForm() {
         <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email cím</Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="pelda@email.com"
-              required
-            />
+            <Input id="email" name="email" type="email" required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Jelszó</Label>
             <Input id="password" name="password" type="password" required />
           </div>
+          {state.error ? (
+            <Alert variant="destructive">
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>{state.error}</AlertDescription>
+            </Alert>
+          ) : (
+            ''
+          )}
           <Button type="submit" className="w-full" disabled={pending}>
             {pending ? 'Belépés...' : 'Belépés'}
           </Button>

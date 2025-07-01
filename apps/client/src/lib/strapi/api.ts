@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { strapiFetch } from './strapi-client';
 import { ActivityAction, ActivityType } from './types';
+import { unauthorized } from 'next/navigation';
 
 export async function getJwt() {
   return (await cookies()).get('jwt')?.value || null;
@@ -47,7 +48,7 @@ export async function getCurrentUser() {
   try {
     return await strapiFetch<any>('/users/me', {}, token);
   } catch {
-    return null;
+    unauthorized();
   }
 }
 
@@ -65,11 +66,18 @@ export async function fetchInvoices() {
   return strapiFetch<any>('/invoices', {}, token || undefined);
 }
 
-export async function postActivity(activityType: ActivityType, activity: ActivityAction) {
+export async function postActivity(
+  activityType: ActivityType,
+  activity: ActivityAction,
+) {
   const token = await getJwt();
   if (!token) return;
-  await strapiFetch('/activity-logs', {
-    method: 'POST',
-    body: JSON.stringify({ data: { activityType, activity } }),
-  }, token);
+  await strapiFetch(
+    '/activity-logs',
+    {
+      method: 'POST',
+      body: JSON.stringify({ data: { activityType, activity } }),
+    },
+    token,
+  );
 }

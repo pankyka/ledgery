@@ -2,9 +2,13 @@
 
 import { validatedAction } from '@/lib/auth/middleware';
 import { createCheckoutSession } from '@/lib/payments/stripe';
-import { clearJwt, registerWithTenant, login as strapiLogin } from '@/lib/strapi/api';
+import {
+  clearJwt,
+  registerWithTenant,
+  login as strapiLogin,
+} from '@/lib/strapi/api';
 import { getTeamForUser } from '@/lib/strapi/queries';
-import { redirect } from 'next/navigation';
+import { redirect, unauthorized } from 'next/navigation';
 import { z } from 'zod';
 
 const loginSchema = z.object({
@@ -20,6 +24,7 @@ export const loginAction = validatedAction(
       await strapiLogin(email, password);
     } catch (e) {
       console.error(e);
+      // unauthorized();
       return {
         error: 'Invalid email or password. Please try again.',
         email,
