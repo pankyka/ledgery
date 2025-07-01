@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user-detail",
+  "info": {
+    "singularName": "user-detail",
+    "pluralName": "user-details",
+    "displayName": "UserDetails",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "phone": { "type": "string" },
+    "companyName": { "type": "string" },
+    "taxNumber": { "type": "string" },
+    "headquarters": { "type": "string" },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "userDetail"
+    }
+  }
+}

@@ -61,6 +61,12 @@
     "tenantRole": {
       "type": "enumeration",
       "enum": ["TenantAdmin", "TenantUser"]
+    },
+    "userDetail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-detail.user-detail",
+      "inversedBy": "user"
     }
   }
 }
