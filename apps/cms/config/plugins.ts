@@ -11,6 +11,9 @@ export default ({ env }) => ({
       },
     },
   },
+  documentation: {
+    enabled: true,
+  },
   'users-permissions': {
     config: {
       jwtSecret: env('JWT_SECRET'),
