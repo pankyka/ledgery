@@ -1,5 +1,6 @@
 import type { Core } from '@strapi/strapi';
 import createTenantRoles from './scripts/create-tenant-admin-role';
+import enableContentTypes from './scripts/enable-content-types';
 
 export default {
   /**
@@ -19,5 +20,6 @@ export default {
    */
   bootstrap({ strapi }: { strapi: Core.Strapi }) {
     createTenantRoles(strapi);
+    enableContentTypes(strapi);
   },
 };
