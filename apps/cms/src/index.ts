@@ -20,6 +20,6 @@ export default {
    */
   bootstrap({ strapi }: { strapi: Core.Strapi }) {
     createTenantRoles(strapi);
-    enableContentTypes(strapi);
+    // enableContentTypes(strapi);
   },
 };

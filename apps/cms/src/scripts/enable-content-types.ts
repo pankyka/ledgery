@@ -10,24 +10,24 @@ const apiTypes = [
 ];
 
 export default async function enableContentTypes(strapi: Core.Strapi) {
-  const { contentTypes } = await strapi
-    .plugin('content-type-builder')
-    .service('content-types')
-    .getContentTypes();
+//   const { contentTypes } = await strapi
+//     .plugin('content-type-builder')
+//     .service('content-types')
+//     .getContentTypes();
 
-  for (const ct of contentTypes.filter(ct => apiTypes.includes(ct.uid))) {
-    if (!ct.visible) {
-      await strapi
-        .plugin('content-type-builder')
-        .service('content-types')
-        .updateContentType(ct.uid, {
-          contentType: {
-            ...ct,
-            visible: true,
-          },
-        });
+//   for (const ct of contentTypes.filter(ct => apiTypes.includes(ct.uid))) {
+//     if (!ct.visible) {
+//       await strapi
+//         .plugin('content-type-builder')
+//         .service('content-types')
+//         .updateContentType(ct.uid, {
+//           contentType: {
+//             ...ct,
+//             visible: true,
+//           },
+//         });
 
-      strapi.log.info('UserDetail content type published programmatically.');
-    }
-  }
+//       strapi.log.info('UserDetail content type published programmatically.');
+//     }
+//   }
 }
