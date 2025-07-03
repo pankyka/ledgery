@@ -11,15 +11,15 @@ export default ({ env }) => ({
       },
     },
   },
-  documentation: {
-    enabled: true,
-  },
+  // documentation: {
+  //   enabled: true,
+  // },
   'users-permissions': {
     config: {
       jwtSecret: env('JWT_SECRET'),
       jwt: {
         expiresIn: '7d',
-      },
+      }, 
       // providers: {
       //   google: {
       //     clientId: process.env.GOOGLE_CLIENT_ID,
